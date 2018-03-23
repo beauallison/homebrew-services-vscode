@@ -1,3 +1,7 @@
 {
-	"extends": "tslint-config-airbnb"
+	"extends": "tslint-config-airbnb",
+	"env": {
+		"node": true,
+		"jest": true
+	}
 }

@@ -10,15 +10,63 @@
     "categories": [
         "Other"
     ],
+    "keywords": [
+        "homebrew",
+        "brew",
+        "services",
+        "osx"
+    ],
     "activationEvents": [
-        "onCommand:extension.sayHello"
+        "onCommand:startService",
+        "onCommand:stopService",
+        "onCommand:refreshButton",
+        "onView:brewExplorer"
     ],
     "main": "./out/extension",
     "contributes": {
+        "menus": {
+            "view/item/context": [
+                {
+                    "command": "startService",
+                    "when": "view == brewExplorer && viewItem == serviceItem"
+                },
+                {
+                    "command": "stopService",
+                    "when": "view == brewExplorer && viewItem == serviceItem"
+                }
+            ],
+            "view/title": [
+                {
+                    "command": "refreshButton",
+                    "when": "view == brewExplorer",
+                    "group": "navigation"
+                }
+            ]
+        },
+        "views": {
+            "explorer": [
+                {
+                    "id": "brewExplorer",
+                    "name": "Brew Services"
+                }
+            ]
+        },
         "commands": [
             {
-                "command": "extension.sayHello",
-                "title": "Hello World"
+                "command": "startService",
+                "title": "Start Service"
+            },
+            {
+                "command": "stopService",
+                "title": "Stop Service"
+            },
+            {
+                "command": "refreshButton",
+                "title": "Refresh",
+                "icon": {
+                    "light": "resources/refreshLight.svg",
+                    "dark": "resources/refreshDark.svg"
+                }
             }
         ]
     },

@@ -5,6 +5,8 @@ import * as vscode from 'vscode';
 
 const brew = require('homebrew-services');
 
+const upperFirst = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
+
 class BrewExplorer implements TreeDataProvider<any> {
 
   private onDidChange: vscode.EventEmitter<any> = new vscode.EventEmitter<any>();
@@ -21,7 +23,7 @@ class BrewExplorer implements TreeDataProvider<any> {
 
   public getTreeItem(element: string[]): TreeItem {
     return {
-      label: `${element[0]} status: ${element[1]}`,
+      label: `${upperFirst(element[0])}: ${upperFirst(element[1])}`,
       contextValue: 'serviceItem',
     };
   }
@@ -29,7 +31,7 @@ class BrewExplorer implements TreeDataProvider<any> {
   public async execute(command: string, args: string[]) {
     const { status } = await brew[command]({ service: args[0] });
     this.refresh();
-    return vscode.window.showInformationMessage(`Service: ${args[0]} ${status}`);
+    return vscode.window.showInformationMessage(`Service: ${upperFirst(args[0])} ${status}`);
   }
 }
 
@@ -40,7 +42,4 @@ export function activate(context: vscode.ExtensionContext) {
   vscode.commands.registerCommand('startService', args => explorer.execute('start', args));
   vscode.commands.registerCommand('stopService', args => explorer.execute('stop', args));
   vscode.commands.registerCommand('refreshButton', () => explorer.refresh());
-}
-
-export function deactivate() {
 }

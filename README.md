@@ -9,4 +9,4 @@ The Brew Services extension makes it easy to start and stop services intalled vi
 
 ## View
 
-<img src="resources/explorer.gif" width=400 />
+<img src="explorer.gif" width=400 />

@@ -10,15 +10,63 @@
     "categories": [
         "Other"
     ],
+    "keywords": [
+        "homebrew",
+        "brew",
+        "services",
+        "osx"
+    ],
     "activationEvents": [
-        "onCommand:extension.sayHello"
+        "onCommand:startService",
+        "onCommand:stopService",
+        "onCommand:refreshButton",
+        "onView:brewExplorer"
     ],
     "main": "./out/extension",
     "contributes": {
+        "menus": {
+            "view/item/context": [
+                {
+                    "command": "startService",
+                    "when": "view == brewExplorer && viewItem == serviceItem"
+                },
+                {
+                    "command": "stopService",
+                    "when": "view == brewExplorer && viewItem == serviceItem"
+                }
+            ],
+            "view/title": [
+                {
+                    "command": "refreshButton",
+                    "when": "view == brewExplorer",
+                    "group": "navigation"
+                }
+            ]
+        },
+        "views": {
+            "explorer": [
+                {
+                    "id": "brewExplorer",
+                    "name": "Brew Services"
+                }
+            ]
+        },
         "commands": [
             {
-                "command": "extension.sayHello",
-                "title": "Hello World"
+                "command": "startService",
+                "title": "Start Service"
+            },
+            {
+                "command": "stopService",
+                "title": "Stop Service"
+            },
+            {
+                "command": "refreshButton",
+                "title": "Refresh",
+                "icon": {
+                    "light": "resources/refreshLight.svg",
+                    "dark": "resources/refreshDark.svg"
+                }
             }
         ]
     },
@@ -27,14 +75,39 @@
         "compile": "tsc -p ./",
         "watch": "tsc -watch -p ./",
         "postinstall": "node ./node_modules/vscode/bin/install",
-        "test": "npm run compile && node ./node_modules/vscode/bin/test"
+        "test": "jest --coverage"
     },
     "devDependencies": {
-        "@types/mocha": "^2.2.42",
+        "@types/jest": "^22.2.2",
         "@types/node": "^7.0.43",
+        "jest": "^22.4.3",
+        "ts-jest": "^22.4.2",
         "tslint": "^5.8.0",
         "tslint-config-airbnb": "^5.8.0",
-        "typescript": "^2.6.1",
+        "typescript": "^2.6.1"
+    },
+    "dependencies": {
+        "homebrew-services": "0.0.2",
         "vscode": "^1.1.6"
+    },
+    "jest": {
+        "transform": {
+            "^.+\\.tsx?$": "ts-jest"
+        },
+        "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+        "modulePathIgnorePatterns": [
+            "<rootDir>/out/"
+        ],
+        "testPathIgnorePatterns": [
+            "<rootDir>/out/"
+        ],
+        "moduleFileExtensions": [
+            "ts",
+            "tsx",
+            "js",
+            "jsx",
+            "json",
+            "node"
+        ]
     }
 }

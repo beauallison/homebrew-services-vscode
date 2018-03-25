@@ -70,6 +70,10 @@
             }
         ]
     },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/beauallison/homebrew-services-vscode"
+    },
     "scripts": {
         "vscode:prepublish": "npm run compile",
         "compile": "tsc -p ./",

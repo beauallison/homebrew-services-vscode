@@ -3,19 +3,33 @@ import brewExplorer from './brewExplorer';
 describe('brewExplorer', () => {
   const explorer = new brewExplorer();
 
-  it('getChildren()', async () => {
-    const services = await explorer.getChildren();
-    expect(services).toEqual([['cassandra', 'stopped']]);
+  describe('getChildren()', () => {
+    it('should return services', async () => {
+      const services = await explorer.getChildren();
+      expect(services).toEqual([['cassandra', 'stopped']]);
+    });
+
+    it('should return an empty array on error', async () => {
+      const services = await explorer.getChildren();
+      expect(services).toEqual([]);
+    });
   });
 
-  it('getTreeItem()', () => {
-    const treeItem = explorer.getTreeItem(['cassandra', 'stopped']);
-    expect(treeItem).toEqual({ contextValue: 'serviceItem', label: 'Cassandra: Stopped' });
+  describe('getTreeItem()', () => {
+    it('should get a tree item', () => {
+      const treeItem = explorer.getTreeItem(['cassandra', 'stopped']);
+      expect(treeItem).toEqual({ contextValue: 'serviceItem', label: 'Cassandra: Stopped' });
+    });
   });
 
-  it('execute()', async () => {
-    const output = await explorer.execute('start', ['cassandra', 'stopped']);
-    expect(output).toBeUndefined();
+  describe('execute()', () => {
+    it('should execute', async () => {
+      await explorer.execute('start', ['cassandra', 'stopped']);
+    });
+
+    it('should catch execution errors', async () => {
+      await explorer.execute('start', ['cassandra', 'stopped']);
+    });
   });
 });
 

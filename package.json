@@ -4,6 +4,7 @@
     "description": "Control Brew services in VS Code",
     "version": "0.0.3",
     "publisher": "beauallison",
+    "icon": "icon.png",
     "engines": {
         "vscode": "^1.21.0"
     },

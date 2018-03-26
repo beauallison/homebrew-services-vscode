@@ -16,7 +16,8 @@ export default class BrewExplorer implements TreeDataProvider<any> {
   }
 
   public async getChildren() {
-    const { services } = await brew.list();
+    const { services } = await brew.list()
+      .catch(() => ({ services: new Map() }));
     return [...services.entries()];
   }
 
@@ -28,7 +29,8 @@ export default class BrewExplorer implements TreeDataProvider<any> {
   }
 
   public async execute(command: string, args: string[]) {
-    const { status } = await brew[command]({ service: args[0] });
+    const { status } = await brew[command]({ service: args[0] })
+      .catch(() => ({ status: 'error' }));
     this.refresh();
     return vscode.window.showInformationMessage(`Service: ${upperFirst(args[0])} ${status}`);
   }

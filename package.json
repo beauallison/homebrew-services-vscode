@@ -2,7 +2,7 @@
     "name": "brew-services",
     "displayName": "Brew Services",
     "description": "Control Brew services in VS Code",
-    "version": "0.0.1",
+    "version": "0.0.3",
     "publisher": "beauallison",
     "engines": {
         "vscode": "^1.21.0"
@@ -24,7 +24,39 @@
     ],
     "main": "./out/extension",
     "contributes": {
+        "commands": [
+            {
+                "command": "startService",
+                "title": "Start Service"
+            },
+            {
+                "command": "stopService",
+                "title": "Stop Service"
+            },
+            {
+                "command": "refreshButton",
+                "title": "Refresh",
+                "icon": {
+                    "light": "resources/refreshLight.svg",
+                    "dark": "resources/refreshDark.svg"
+                }
+            }
+        ],
         "menus": {
+            "commandPalette": [
+                {
+                    "command": "startService",
+                    "when": "view == brewExplorer && viewItem == serviceItem"
+                },
+                {
+                    "command": "stopService",
+                    "when": "view == brewExplorer && viewItem == serviceItem"
+                },
+                {
+                    "command": "refreshButton",
+                    "when": "view == brewExplorer"
+                }
+            ],
             "view/item/context": [
                 {
                     "command": "startService",
@@ -50,25 +82,7 @@
                     "name": "Brew Services"
                 }
             ]
-        },
-        "commands": [
-            {
-                "command": "startService",
-                "title": "Start Service"
-            },
-            {
-                "command": "stopService",
-                "title": "Stop Service"
-            },
-            {
-                "command": "refreshButton",
-                "title": "Refresh",
-                "icon": {
-                    "light": "resources/refreshLight.svg",
-                    "dark": "resources/refreshDark.svg"
-                }
-            }
-        ]
+        }
     },
     "repository": {
         "type": "git",

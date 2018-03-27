@@ -2,7 +2,7 @@
     "name": "brew-services",
     "displayName": "Brew Services",
     "description": "Control Brew services in VS Code",
-    "version": "0.0.3",
+    "version": "0.1.0",
     "publisher": "beauallison",
     "icon": "icon.png",
     "engines": {
@@ -20,6 +20,7 @@
     "activationEvents": [
         "onCommand:startService",
         "onCommand:stopService",
+        "onCommand:restartService",
         "onCommand:refreshButton",
         "onView:brewExplorer"
     ],
@@ -33,6 +34,10 @@
             {
                 "command": "stopService",
                 "title": "Stop Service"
+            },
+            {
+                "command": "restartService",
+                "title": "Restart Service"
             },
             {
                 "command": "refreshButton",
@@ -54,6 +59,10 @@
                     "when": "view == brewExplorer && viewItem == serviceItem"
                 },
                 {
+                    "command": "restartService",
+                    "when": "view == brewExplorer && viewItem == serviceItem"
+                },
+                {
                     "command": "refreshButton",
                     "when": "view == brewExplorer"
                 }
@@ -65,6 +74,10 @@
                 },
                 {
                     "command": "stopService",
+                    "when": "view == brewExplorer && viewItem == serviceItem"
+                },
+                {
+                    "command": "restartService",
                     "when": "view == brewExplorer && viewItem == serviceItem"
                 }
             ],
@@ -106,7 +119,7 @@
         "typescript": "^2.6.1"
     },
     "dependencies": {
-        "homebrew-services": "0.0.2",
+        "homebrew-services": "0.1.0",
         "vscode": "^1.1.6"
     },
     "jest": {

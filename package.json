@@ -90,10 +90,19 @@
             ]
         },
         "views": {
-            "explorer": [
+            "brewExplorer": [
                 {
                     "id": "brewExplorer",
-                    "name": "Brew Services"
+                    "name": "Explorer"
+                }
+            ]
+        },
+        "viewsContainers": {
+            "activitybar": [
+                {
+                    "icon": "icon.svg",
+                    "id": "brewExplorer",
+                    "title": "Homebrew Services"
                 }
             ]
         }

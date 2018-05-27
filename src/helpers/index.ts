@@ -2,17 +2,17 @@ export function upperFirst(str: string) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-interface status {
+interface command {
   restart: string;
   start: string;
   stop: string;
   [key: string]: string;
 }
 
-const statusConversion: status = {
+const toStatus: command = {
   restart: 'Restarting',
   start: 'Starting',
   stop: 'Stopping',
 };
 
-export { statusConversion };
+export { toStatus };

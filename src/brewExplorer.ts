@@ -2,7 +2,7 @@
 
 import * as vscode from 'vscode';
 import { TreeDataProvider, TreeItem } from 'vscode';
-import { upperFirst, statusConversion } from './helpers';
+import { upperFirst, toStatus } from './helpers';
 
 const brew = require('homebrew-services');
 
@@ -38,7 +38,7 @@ export default class BrewExplorer implements TreeDataProvider<any> {
   }
 
   public async execute(command: string, args: string[]) {
-    const message = `Brew: ${statusConversion[command]} ${upperFirst(args[0])}`;
+    const message = `Brew: ${toStatus[command]} ${upperFirst(args[0])}`;
     return vscode.window.setStatusBarMessage(message, brew[command]({ service: args[0] })
       .catch(() => ({ status: 'error' }))
       .then(() => this.refresh()));

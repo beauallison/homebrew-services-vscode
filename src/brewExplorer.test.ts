@@ -16,14 +16,14 @@ describe('brewExplorer', () => {
   });
 
   describe('getTreeItem()', () => {
-    it('should get stopped tree item', () => {
+    it('should return a stopped tree item', () => {
       const { iconPath, ...treeItem } = explorer.getTreeItem(['cassandra', 'stopped']);
       expect(treeItem).toEqual({ contextValue: 'serviceItem', label: 'Cassandra: Stopped' });
       expect(iconPath['dark']).toMatch(/Dark/);
       expect(iconPath['light']).toMatch(/Light/);
     });
 
-    it('should get started tree item', () => {
+    it('should return a started tree item', () => {
       const { iconPath, ...treeItem } = explorer.getTreeItem(['cassandra', 'started']);
       expect(treeItem).toEqual({ contextValue: 'serviceItem', label: 'Cassandra: Started' });
       expect(iconPath['dark']).toMatch(/Dark/);

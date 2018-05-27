@@ -100,7 +100,7 @@
         "viewsContainers": {
             "activitybar": [
                 {
-                    "icon": "icon.svg",
+                    "icon": "resources/icon.svg",
                     "id": "brewExplorer",
                     "title": "Homebrew Services"
                 }

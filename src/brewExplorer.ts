@@ -22,8 +22,8 @@ export default class BrewExplorer implements TreeDataProvider<any> {
   }
 
   public getTreeItem(service: string[]): TreeItem {
-    const icon = service[1] === 'started' ? 'started' : 'stopped';
-    const generatePath = (style: string) => `${__dirname}/../resources/${icon}${style}.svg`;
+    const status = service[1] === 'started' ? 'started' : 'stopped';
+    const generatePath = (style: string) => `${__dirname}/../resources/${status}${style}.svg`;
 
     const iconPath = {
       light: generatePath('Light'),

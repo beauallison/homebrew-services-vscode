@@ -4,7 +4,7 @@ module.exports = ({
   },
   window: {
     registerTreeDataProvider: jest.fn(),
-    showInformationMessage: jest.fn(),
+    setStatusBarMessage: jest.fn(),
   },
   commands: {
     registerCommand: jest.fn(),

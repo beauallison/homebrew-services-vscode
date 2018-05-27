@@ -2,7 +2,7 @@
     "name": "brew-services",
     "displayName": "Brew Services",
     "description": "Control Brew services in VS Code",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "publisher": "beauallison",
     "icon": "icon.png",
     "engines": {

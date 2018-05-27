@@ -11,7 +11,7 @@ The Brew Services extension makes it easy to start and stop services intalled vi
 
 ## View
 
-<img src="explorer.gif" width=400 />
+<img src="screenshot.png" width=400 />
 
 <!-- Links -->
 [badgeBuild]: https://travis-ci.org/beauallison/homebrew-services-vscode.svg?branch=master

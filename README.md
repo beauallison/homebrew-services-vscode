@@ -2,7 +2,7 @@
 
 ![Build Status][badgeBuild] ![Coverage Status][badgeCov]
 
-The Brew Services extension makes it easy to start and stop services intalled via [Homebrew][brew] (required) on OSX from Visual Studio Code.
+The Brew Services extension makes it easy to start and stop services installed via [Homebrew][brew] (required) on OSX from Visual Studio Code.
 
 Available on the [VS Marketplace][marketplace].
 
